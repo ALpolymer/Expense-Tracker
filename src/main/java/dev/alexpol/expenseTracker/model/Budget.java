@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "users")
+@Table(name = "budget")
 public class Budget extends AbstractEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
