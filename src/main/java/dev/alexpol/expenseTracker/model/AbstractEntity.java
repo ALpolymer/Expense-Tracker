@@ -1,4 +1,4 @@
-package dev.alexpol.rest_api.model;
+package dev.alexpol.expenseTracker.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
