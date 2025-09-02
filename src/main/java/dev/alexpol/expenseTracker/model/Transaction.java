@@ -22,9 +22,6 @@ public class Transaction extends AbstractEntity {
 
 
     @Column(nullable = false, precision = 19, scale = 2)
-    @NotNull(message = "Total amount is required")
-    @Positive(message = "Total amount must be positive")
-    @DecimalMin(value = "0.01", message = "Total amount must be at least 0.01")
     private BigDecimal amount;
 
     private String note;

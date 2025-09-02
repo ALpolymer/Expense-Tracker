@@ -18,8 +18,6 @@ public class Category {
     private Long id;
 
     @Column(nullable = false)
-    @NotBlank(message = "title of category is required")
-    @Size(max = 50, message = "category title  must not exceed 50 characters")
     private String title;
 
     private String icon;

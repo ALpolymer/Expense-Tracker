@@ -18,8 +18,6 @@ public class Budget extends AbstractEntity{
     private Long id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Budget title is required")
-    @Size(max = 50, message = "Budget title  must not exceed 50 characters")
     private String title;
 
     @Enumerated(EnumType.STRING)
@@ -28,5 +26,4 @@ public class Budget extends AbstractEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private User user;
-
 }

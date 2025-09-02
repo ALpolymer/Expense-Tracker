@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,29 +23,22 @@ public class User extends AbstractEntity{
     private Long id;
 
     @Column(unique = true, nullable = false)
-    @NotBlank(message = "Username is required")
-    @Size(max = 50, message = "Username must be less than 50 characters")
     private String username;
 
     @Column(unique = true, nullable = false)
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email should be valid")
-    @Size(max = 255, message = "Email must be less than 255 characters")
+
     private String email;
 
     @Column(nullable = false)
-    @NotBlank(message = "Password is required")
-    @Size(min = 8, message = "Password must be at least 8 characters")
+
     private String password;
 
     @Column(nullable = false)
-    @NotBlank(message = "First name is required")
-    @Size(max = 50, message = "First name must be less than 50 characters")
+
     private String firstname;
 
     @Column(nullable = false)
-    @NotBlank(message = "Last name is required")
-    @Size(max = 50, message = "Last name must be less than 50 characters")
+
     private String lastname;
 
     @Enumerated(EnumType.STRING)
@@ -57,7 +48,7 @@ public class User extends AbstractEntity{
     private Boolean active = true;
 
     @Getter(AccessLevel.PROTECTED)
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Budget> budgets = new HashSet<>();
 
     public Set<Budget> getAllBudgets(){
