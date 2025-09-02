@@ -8,6 +8,11 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -50,4 +55,24 @@ public class User extends AbstractEntity{
 
     @ColumnDefault("true")
     private Boolean active = true;
+
+    @Getter(AccessLevel.PROTECTED)
+    @OneToMany(mappedBy = "user")
+    private Set<Budget> budgets = new HashSet<>();
+
+    public Set<Budget> getAllBudgets(){
+        return Collections.unmodifiableSet(budgets);
+    }
+
+    public void addBudget(Budget budget){
+        if(budgets == null) budgets = new HashSet<>();
+        budgets.add(budget);
+        budget.setUser(this);
+    }
+
+    public void removeBudget(Budget budget){
+        if(budgets==null) return;
+        budgets.remove(budget);
+        budget.setUser(null);
+    }
 }
