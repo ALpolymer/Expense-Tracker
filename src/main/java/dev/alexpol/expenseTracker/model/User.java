@@ -1,10 +1,6 @@
 package dev.alexpol.expenseTracker.model;
-
 import dev.alexpol.expenseTracker.core.enums.RolesEnum;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import java.util.Collections;
@@ -26,19 +22,15 @@ public class User extends AbstractEntity{
     private String username;
 
     @Column(unique = true, nullable = false)
-
     private String email;
 
     @Column(nullable = false)
-
     private String password;
 
     @Column(nullable = false)
-
     private String firstname;
 
     @Column(nullable = false)
-
     private String lastname;
 
     @Enumerated(EnumType.STRING)

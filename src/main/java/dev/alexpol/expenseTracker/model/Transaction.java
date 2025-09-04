@@ -1,11 +1,6 @@
 package dev.alexpol.expenseTracker.model;
-
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.*;
-
 import java.math.BigDecimal;
 
 @Entity
@@ -13,7 +8,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "budget")
+@Table(name = "transactions")
 public class Transaction extends AbstractEntity {
 
     @Id
@@ -25,4 +20,12 @@ public class Transaction extends AbstractEntity {
     private BigDecimal amount;
 
     private String note;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "budget_id")
+    private Budget budget;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
