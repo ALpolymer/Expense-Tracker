@@ -25,7 +25,7 @@ public class Budget extends AbstractEntity{
     private CurrenciesEnum currency;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "owner_id", nullable = false)
     private User user;
 
     @Getter(AccessLevel.PROTECTED)
